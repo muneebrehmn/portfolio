@@ -1,0 +1,53 @@
+---
+title: Race Conditions in Web Applications — Detection and Mitigation
+description: Race conditions are subtle and dangerous. Learn practical ways to find them and harden systems against exploitation.
+image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHx-XLph0WsbZ2Xno4gf8u-NcjRcFt7bOYyw&s
+createdAt: 2025-09-13
+updatedAt: 2025-09-13
+tags: ["race-conditions", "web-security", "concurrency"]
+---
+
+Race conditions are the quiet mischief-makers of software: they rarely show up in tests but can allow attackers to bypass logic, abuse quotas, or escalate privileges when timing lines up.
+
+---
+
+## Typical Targets
+
+- **Account creation / validation flows** (two requests create duplicate resources)  
+- **Balance transfers / payments** (double-spend via concurrent requests)  
+- **Access-control checks followed by state changes** (check-then-act races)  
+- **Resource allocation** (temporary invariants violated under concurrency)
+
+---
+
+## How to Find Them (practical approach)
+
+- **Fuzz concurrency**: send parallel requests that race the same endpoint (e.g., two checkout requests at once).  
+- **Use high-rate tools** that let you control timing and concurrency (throttled bursts to simulate near-simultaneous requests).  
+- **Instrument app logs** with correlation IDs and timestamps to spot overlapping operations on the same resource.  
+- **Code review for check-then-act patterns**: find places where access is checked, then a non-atomic action happens.
+
+---
+
+## Mitigation Strategies
+
+- **Make operations atomic**: move check-and-act into a single transactional database operation (use DB transactions/locks).  
+- **Use optimistic concurrency control**: version resources (e.g., row version or `If-Match` headers) and reject conflicting updates.  
+- **Introduce server-side idempotency keys** for actions that should only occur once (payments, account creation).  
+- **Rate-limit per resource** to reduce the effectiveness of parallelized exploitation attempts.  
+- **Avoid wide-ranging temporary permissions** — minimize the window between check and privileged action.
+
+
+---
+
+## Detection in Production
+
+- Watch for **duplicate side effects** (double charges, duplicated records).  
+- Alert on **concurrent write errors** or repeated contention on the same resource ID.  
+- Use synthetic tests that **replay parallel requests** against staging and monitor for inconsistencies.
+
+---
+
+## Closing
+
+Race conditions are messy because they blend code, timing, and infrastructure. The fastest wins — both attackers and defenders. Make critical operations atomic, prefer DB-level guarantees, and instrument your systems so you’ll know when timing attacks try to exploit them.
