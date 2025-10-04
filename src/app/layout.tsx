@@ -4,8 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/globals.css";
 import { SITE_INFO } from "@/config/site";
 import { USER } from "@/features/profile/data/user";
-
-
+import { Analytics } from '@vercel/analytics/react';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
   alternates: {
@@ -64,6 +63,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <Analytics/>
       </body>
     </html>
   );

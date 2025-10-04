@@ -26,21 +26,12 @@ export function Overview() {
           );
         })}
 
-        <IntroItem icon={MapPinIcon} content={USER.address} />
-
-        <PhoneItem phoneNumber={USER.phoneNumber} />
-
         <EmailItem email={USER.email} />
 
         <IntroItem
           icon={GlobeIcon}
           content={urlToName(USER.website)}
           href={USER.website}
-        />
-
-        <IntroItem
-          icon={USER.gender === "male" ? MarsIcon : VenusIcon}
-          content={USER.pronouns}
         />
       </PanelContent>
     </Panel>
