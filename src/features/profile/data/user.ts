@@ -6,15 +6,12 @@ export const USER: User = {
   displayName: "Muneeb",
   username: "muneeb",
   gender: "male",
-  pronouns: "he/him",
   bio: "Automation & Exploit Development",
   flipSentences: [
     "Offensive Security Specialist",
     "Python Engineer",
     "Automation & Exploit Development",
   ],
-  address: "University Chowk, Bahawalpur, Pakistan",
-  phoneNumber: "KzkyIDMwOCA2MDU4NDU1", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
   email: "bXVuZWVicmVobWFuLmluZm9zZWNAZ21haWwuY29t", // base64 encoded
   website: "https://muneebrehman.me",
   jobTitle: "Web Exploitation Engineer",
