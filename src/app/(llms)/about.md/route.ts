@@ -11,7 +11,6 @@ ${USER.about.trim()}
 - First Name: ${USER.firstName}
 - Last Name: ${USER.lastName}
 - Display Name: ${USER.displayName}
-- Location: ${USER.address}
 - Website: ${USER.website}
 
 ## Social Links
