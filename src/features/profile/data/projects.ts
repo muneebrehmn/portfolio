@@ -2,6 +2,34 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
+    id: "phantom",
+    title: "Phantom",
+    period: {
+      start: "05.2025",
+    },
+    link: "https://github.com/muneebrehmn/phantom",
+    skills: [
+      "Python",
+      "Prompt Injection",
+      "LLM Security",
+      "Async/Await",
+      "Semantic Analysis",
+      "Sentence Transformers",
+      "CVSS Scoring",
+      "Burp Suite",
+      "Offensive Security",
+      "CLI Tooling",
+    ],
+    description: `Automated prompt injection reconnaissance framework for LLM-powered applications. 6-phase async pipeline covering the full attack lifecycle.
+- 🔍 Crawl → Fingerprint → Classify → Inject → Analyze → Report pipeline with async concurrency
+- 💣 588 payloads across 16 attack vectors (jailbreak, role confusion, system prompt leak, encoding bypass, and more)
+- 🧠 Semantic success detection via sentence embeddings — classifies responses as refusal vs compliance
+- 📊 CVSS-scored findings exported as Markdown, JSON, and interactive HTML dashboard
+- 🌐 Multilingual payload coverage: Arabic, Chinese, Spanish, French, Russian, Japanese`,
+    logo: "",
+    isExpanded: true,
+  },
+  {
     id: "python-network-scanner",
     title: "Python Network Scanner",
     period: {
